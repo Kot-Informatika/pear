@@ -1,0 +1,21 @@
+{
+  "name": "pearem-server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "config": "^3.3.6",
+    "nodemon": "^2.0.7",
+    "socket.io": "^4.1.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/config": "^0.0.38"
+  }
+}
