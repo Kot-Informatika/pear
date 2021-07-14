@@ -22,16 +22,20 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
     useContentSize: true,
-    width: 1000,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
-    }
+    },
+    transparent: false,
+    fullscreen: true,
+    frame: false
   })
 
   mainWindow.loadURL(winURL)
+  mainWindow.setMenuBarVisibility(false)
+  mainWindow.maximize()
+  mainWindow.show()
 
   mainWindow.on('closed', () => {
     mainWindow = null

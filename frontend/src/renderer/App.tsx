@@ -1,62 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './assets/logo.svg'
 import './App.css'
 import { hot } from 'react-hot-loader/root'
 import { remote } from 'electron'
 
+
+const NumericKeyboard: React.FC = () => {
+  const layout = [['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3']];
+  const [text, setText] = useState('');
+  return (
+    <div style={{ flex: 1, backgroundColor: "red" }}>
+      <div style={{ backgroundColor: "red" }}>{text}</div>
+      <div>
+        {layout.map(row =>
+          <div style={{ display: "flex", flexDirection: "row", width: '30vw', height: '10vw' }}>
+            {row.map(entry => <div onClick={() => setText(`${text}${entry}`)} style={{ display: "flex", flex: 1, border: "1px solid black", justifyContent: "center", alignContent: "center", alignItems: "center", fontSize: '5em' }}>{entry}</div>)}
+          </div>)}
+      </div>
+    </div>
+  )
+
+}
+
 const App: React.FC = () => {
-  const electron = process.versions.electron
-  const node = process.versions.node
-  const platform = require('os').platform()
-  const version = require('../../package.json').version
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    remote.shell.openExternal(e.currentTarget.href)
-  }
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <ul className="App-info">
-          <li>
-            electron: <span>{electron}</span>
-          </li>
-          <li>
-            node: <span>{node}</span>
-          </li>
-          <li>
-            platform: <span>{platform}</span>
-          </li>
-          <li>
-            version: <span>{version}</span>
-          </li>
-        </ul>
-        <p>
-          Edit <code>src/renderer/App.tsx</code> and save to reload.
-        </p>
-        <div>
-          <a
-            onClick={handleLinkClick}
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <a
-            onClick={handleLinkClick}
-            className="App-link"
-            href="https://electronjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Electron
-          </a>
-        </div>
-      </header>
+      <div style={{ backgroundColor: "red", width: "100vw", height: "100vh" }}>
+        <NumericKeyboard />
+      </div>
     </div>
   )
 }

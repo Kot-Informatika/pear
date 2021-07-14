@@ -8,7 +8,7 @@
 /* eslint-disable */
 
 // Install `electron-debug` with `devtron`
-require('electron-debug')({ showDevTools: true })
+require('electron-debug')({ showDevTools: false })
 
 // Install `react-devtools`
 require('electron').app.on('ready', () => {
@@ -18,7 +18,7 @@ require('electron').app.on('ready', () => {
 
   installExtension
     .default([installExtension.REACT_DEVELOPER_TOOLS])
-    .then(() => {})
+    .then(() => { })
     .catch((err: Error) => {
       console.log('Unable to install devtools: \n', err)
     })
